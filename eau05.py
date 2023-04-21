@@ -4,39 +4,31 @@ String dans string
 Créez un programme qui détermine si une chaîne de caractère se trouve dans une autre.
 """
 def inside_or_not():
-	if len(first) >= len(second):
-		for i in range(len(first) ):
-			if first[0] == second[0]:
-				for i in range(len(second) ):
-					if first[i] != second[i]:
-						break
-					else:
-						print("")
-					print("vrai")
-				return 1
-		print("faux")
+	boolean = None
+	try:
+		first.index(second)
+	except Exception as e:
+		boolean = False
 	else:
-		for i in range(len(second) ):
-			if first[0] == second[0]:
-				for i in range(len(first) ):
-					if first[i] != second[i]:
-						break
-					else:
-						print("")
-					print("vrai")
-				return 1
-		print("faux")
-	"""des que la premier lettre est commun on regarde la suite avec une boucle sinon 
-			on regarde lettre par lettre jusqu'a la fin pour verifier qu'il n'y a pas une nouvelle lette """
+		boolean = True
+	finally:
+		print(boolean)
+	
 			
 
 def main():
+	global first
+	global second
+	
 	if len(sys.argv) != 3:
 		print("erreur")
+	elif sys.argv[1] > sys.argv[2]:
+		first = sys.argv[1]
+		second = sys.argv[2]
 	else:
-		inside_or_not()
+		first = sys.argv[2]
+		second = sys.argv[1]
+	inside_or_not()
 
 if __name__ == '__main__':
-	first = sys.argv[1]
-	second = sys.argv[2]
 	main()
